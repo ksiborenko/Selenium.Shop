@@ -4,15 +4,15 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class ProductsPage {
+public class Implicit {
 
-    private final WebDriver driver;
+    private WebDriver driver;
 
-    public ProductsPage(WebDriver driver) {
+    public Implicit(WebDriver driver) {
         this.driver = driver;
     }
 
-    public void productsSelection() {
+    public void test() throws InterruptedException {
         this.driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
         List<WebElement> products = this.driver.findElements(By.xpath("//h4[@class='product-name']"));
         for (int i = 0; i < products.size(); i++) {
@@ -21,13 +21,8 @@ public class ProductsPage {
                     products.get(i).getText().contains("Brinjal") ||
                     products.get(i).getText().contains("Onion") ||
                     products.get(i).getText().contains("Walnuts")) {
-                this.driver.findElements(By.xpath("//div[@class='product-action']/button")).get(i).click();
+                this.driver.findElements(By.xpath("//button[text()='ADD TO CART']")).get(i).click();
             }
         }
-    }
-
-    public void cart() {
-        this.driver.findElement(By.cssSelector("img[alt='Cart']")).click();
-        this.driver.findElement(By.xpath("//button[text()='PROCEED TO CHECKOUT']")).click();
     }
 }

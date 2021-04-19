@@ -8,16 +8,24 @@ public class Main {
 
     private WebDriver driver;
     private ProductsPage productsPage;
+    private Implicit implicit;
 
     @Before
     public void setup() {
         WebDriverManager.edgedriver().setup();
         this.driver = new EdgeDriver();
         this.productsPage = new ProductsPage(this.driver);
+        this.implicit = new Implicit(this.driver);
     }
 
     @Test
     public void shop() {
         this.productsPage.productsSelection();
+        this.productsPage.cart();
     }
+    @Test
+    public void implicit() throws InterruptedException {
+        this.implicit.test();
+    }
+
 }
