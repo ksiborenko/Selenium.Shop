@@ -3,6 +3,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class ProductsPage {
 
@@ -29,5 +30,9 @@ public class ProductsPage {
     public void cart() {
         this.driver.findElement(By.cssSelector("img[alt='Cart']")).click();
         this.driver.findElement(By.xpath("//button[text()='PROCEED TO CHECKOUT']")).click();
+    }
+    public void discountCode() {
+        this.driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+        this.driver.findElement(By.xpath("//input[@class='promoCode']")).sendKeys("rahulshettyacademy");
     }
 }
