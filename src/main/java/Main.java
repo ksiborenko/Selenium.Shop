@@ -1,4 +1,5 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -22,5 +23,9 @@ public class Main {
         this.shop.cart();
         this.shop.discountCode();
         this.shop.proceed();
+    }
+    @After
+    public void quit () {
+        this.driver.quit();
     }
 }
